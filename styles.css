@@ -71,6 +71,7 @@ button {
 }
 
 /* ----- Button styles ----- */
+
 button:hover {
     background-color: rgb(202, 242, 255);
 }

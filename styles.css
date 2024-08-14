@@ -11,9 +11,10 @@ body {
 
 .calc-cont {
     width: 400px;
+    max-width: 400px;
     height: auto;
     border: 2px solid black;
-    margin: 10vh auto;
+    margin: 2vh auto;
     border-radius: 10px;
     box-shadow: 0 0 10px 10px rgba(0,0,0,0.4);
 }
@@ -27,24 +28,49 @@ body {
     border-radius: 20px;
 }
 
-.btn-cont {
+/* ----- Flexbox bullshit ----- */
+
+.btn-cont-operator, .btn-bottom-cont, .btn-number-cont, .btn-result-cont {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+}
+
+.btn-cont-operator, .btn-number-cont, .btn-result-cont {
     margin: 10px;
     gap: 5px;
 }
 
+.btn-cont-operator {
+    margin-bottom: 0;
+}
+
+.btn-number-cont {
+    margin-top: 5px;
+    margin-right: 0;
+    flex-wrap: wrap;
+    width: 300px;
+    max-width: 300px;
+}
+
+.btn-result-cont {
+    margin-top: 5px;
+    margin-left: 0;
+    width: 100px;
+    max-width: 100px;
+    justify-content: center;
+}
+
 button {
     border-radius: 10px;
-    flex: 1 1 23%;
+    flex: 1 1 90px;
+    max-width: 90px;
     height: 100px;
 }
 
 .btn-result {
-    width: 100%;
+    height: 100%;
 }
 
+/* ----- Button styles ----- */
 button:hover {
     background-color: rgb(202, 242, 255);
 }

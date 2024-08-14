@@ -7,21 +7,25 @@
 }
 
 body {
-    background-color: dimgray;
+    background-color: rgb(226, 164, 92);
 }
 
 .calc-cont {
+    box-sizing: content-box;
+    padding: 5px;
     width: 400px;
     max-width: 400px;
     height: auto;
-    border: 2px solid black;
-    margin: 2vh auto;
-    border-radius: 10px;
+    border: 5px outset rgb(146, 146, 146);
+    margin: 5vh auto;
+    border-radius: 15px;
+    background-color: dimgray;
     box-shadow: 0 0 10px 10px rgba(0,0,0,0.4);
 }
 
 .display {
     background-color: rgb(53, 53, 53);
+    border: 5px inset rgb(90, 89, 89);
     width: auto;
     height: 3rem;
     margin: 20px 20px;
@@ -69,7 +73,6 @@ p {
 }
 
 button {
-    border-radius: 10px;
     flex: 1 1 90px;
     max-width: 90px;
     height: 90px;
@@ -86,16 +89,24 @@ button:hover {
    transition-duration: 0.2s;
 }
 
+button {
+    border: 5px outset rgb(255, 255, 255);
+    border-radius: 20px;
+}
+
 .btn-operator {
     background-color: rgb(148, 148, 148);
+    border-color: rgb(182, 182, 182);
 }
 
 .btn-result {
     background-color: rgb(82, 224, 82);
+    border-color: rgb(114, 253, 114);
 }
 
 .btn-backspace {
     background-color: rgb(255, 102, 102);
+    border-color: rgb(255, 136, 136);
 }
 
 button:active {

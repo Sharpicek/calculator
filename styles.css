@@ -45,6 +45,7 @@ p {
 
 .btn-cont-operator, .btn-bottom-cont, .btn-number-cont, .btn-result-cont {
     display: flex;
+    justify-content: space-between;
 }
 
 .btn-cont-operator, .btn-number-cont, .btn-result-cont {
@@ -58,7 +59,7 @@ p {
 
 .btn-number-cont {
     margin-top: 5px;
-    margin-right: 0;
+    margin-right: 2.5px;
     flex-wrap: wrap;
     width: 300px;
     max-width: 300px;
@@ -69,7 +70,7 @@ p {
     margin-left: 0;
     width: 100px;
     max-width: 100px;
-    justify-content: center;
+    justify-content: flex-end;
 }
 
 button {
@@ -84,15 +85,14 @@ button {
 
 /* ----- Button styles ----- */
 
-button:hover {
-   opacity: 0.7;
-   transition-duration: 0.2s;
-}
-
 button {
     border: 5px outset rgb(255, 255, 255);
-    border-radius: 20px;
 }
+
+button:hover {
+    opacity: 0.7;
+    transition-duration: 0.2s;
+ }
 
 .btn-operator {
     background-color: rgb(148, 148, 148);
@@ -113,4 +113,3 @@ button:active {
     transform: translateY(2px);
 
 }
-

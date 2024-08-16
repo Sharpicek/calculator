@@ -1,8 +1,8 @@
 let firstNumber = "";
 let secondNumber = ""; 
-let resultPressed = "no";
-let fillOnlySecondNumber = "no";
-let operator;
+let resultPressed = false;
+let fillOnlySecondNumber = false;
+let operator = null;
 const allButtons = document.querySelectorAll("button");
 const display = document.getElementById("display-text");
 
@@ -23,11 +23,11 @@ function operate(firstNumber, operator, secondNumber) {
             break;
     }
     updateDisplay(result, "result")
-    operator = undefined;
+    operator = null;
     firstNumber = result;
     secondNumber = "";
-    resultPressed = "yes";
-    fillOnlySecondNumber = "yes";
+    resultPressed = true;
+    fillOnlySecondNumber = true;
     console.log(result);
     return result;
 };
@@ -47,11 +47,11 @@ function updateDisplay(value, type) {
 };
 
 function storeNumber(num) {
-    if (resultPressed == "yes" && fillOnlySecondNumber == "no") {
+    if (resultPressed && !fillOnlySecondNumber) {
         clearCalculator();
         firstNumber += num; 
         updateDisplay(num, "num1");
-    } else if (operator == undefined && fillOnlySecondNumber == "no") {
+    } else if (operator == null && !fillOnlySecondNumber) {
         firstNumber += num; 
         updateDisplay(firstNumber, "num1");
     } else {
@@ -64,9 +64,9 @@ function storeNumber(num) {
 function clearCalculator() {
     firstNumber = "";
     secondNumber = ""; 
-    resultPressed = "no";
-    fillOnlySecondNumber = "no";
-    operator = undefined;
+    resultPressed = false;
+    fillOnlySecondNumber = false;
+    operator = null;
     updateDisplay();
 }
 

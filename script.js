@@ -6,20 +6,20 @@ let operator = null;
 const allButtons = document.querySelectorAll("button");
 const display = document.getElementById("display-text");
 
-function operate(firstNumber, operator, secondNumber) {
+function operate(firstNum, operatorChoice, secondNum) {
     let result;
-    switch (operator) {
+    switch (operatorChoice) {
         case " + ":
-            result = firstNumber + secondNumber;
+            result = firstNum + secondNum;
             break;
         case " - ":
-            result = firstNumber - secondNumber;
+            result = firstNum - secondNum;
             break;
         case " x ":
-            result = firstNumber * secondNumber;
+            result = firstNum * secondNum;
             break;
         case " / ":
-            result = firstNumber / secondNumber;
+            result = firstNum / secondNum;
             break;
     }
     updateDisplay(result, "result")
@@ -47,18 +47,20 @@ function updateDisplay(value, type) {
 };
 
 function storeNumber(num) {
-    if (resultPressed && !fillOnlySecondNumber) {
+    if (resultPressed && operator == null) {
         clearCalculator();
         firstNumber += num; 
         updateDisplay(num, "num1");
+        console.log("Num 1: " + firstNumber);
     } else if (operator == null && !fillOnlySecondNumber) {
         firstNumber += num; 
         updateDisplay(firstNumber, "num1");
+        console.log("Num 1: " + firstNumber);
     } else {
         secondNumber += num;
         updateDisplay(secondNumber, "num2");
-    } 
-    console.log(firstNumber);
+        console.log("Num 1: " + firstNumber + " || Num 2: " + secondNumber);
+    }
 };
 
 function clearCalculator() {

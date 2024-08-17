@@ -22,6 +22,7 @@ function operate(firstNum, operatorChoice, secondNum) {
             result = firstNum / secondNum;
             break;
     }
+    result = Math.round((result + Number.EPSILON) * 1000) / 1000
     updateDisplay(result, "result")
     operator = null;
     firstNumber = result;

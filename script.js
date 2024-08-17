@@ -41,19 +41,30 @@ function updateDisplay(value, type) {
         display.textContent += getLastDigit(value);
     } else if (type == "result") {
         display.textContent = value;
-    } else {
+    } else if (type == "clear") {
         display.textContent = 0;
+    } else if (display.textContent.length >= 10) {
+        display.textContent = "";
+        display.textContent += getLastDigit(value);
+    } else {
+        display.textContent += getLastDigit(value);
     }
 };
 
 function checkLength(num) {
+    if (secondNumber.length == 10) return;
     if (resultPressed && operator == null) {
         clearCalculator();
         storeValue(num, "firstNumber");
     } else if (operator == null && !fillOnlySecondNumber) {
+        if (firstNumber.length == 10) return;
         storeValue(num, "firstNumber");
     } else {
-        storeValue(num, "secondNumber");
+        if (firstNumber.length == 10) {
+            storeValue(num);
+        } else {
+            storeValue(num, "secondNumber");
+        }
     }
 };
 
@@ -61,12 +72,13 @@ function storeValue(num, type) {
     if (type == "firstNumber") {
         firstNumber += num; 
         updateDisplay(firstNumber, "num1");
-        console.log("Num 1: " + firstNumber);
     } else if (type == "secondNumber") {
         secondNumber += num;
         updateDisplay(secondNumber, "num2");
-        console.log("Num 1: " + firstNumber + " || Num 2: " + secondNumber);
-    } else {}
+    } else {
+        secondNumber += num;
+        updateDisplay(secondNumber);
+    }
 }
 
 function clearCalculator() {
@@ -75,7 +87,7 @@ function clearCalculator() {
     resultPressed = false;
     fillOnlySecondNumber = false;
     operator = null;
-    updateDisplay();
+    updateDisplay(null, "clear");
 }
 
 for (let i = 0; i < 17; i++) {

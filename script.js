@@ -52,15 +52,16 @@ function updateDisplay(value, type) {
 };
 
 function checkLength(num) {
+    if (display.textContent.length >= 13 && secondNumber != "") return;
     if (secondNumber.length == 10) return;
     if (resultPressed && operator == null) {
         clearCalculator();
         storeValue(num, "firstNumber");
     } else if (operator == null && !fillOnlySecondNumber) {
-        if (firstNumber.length == 10) return;
+        if (firstNumber.length >= 10) return;
         storeValue(num, "firstNumber");
     } else {
-        if (firstNumber.length == 10) {
+        if (firstNumber.length >= 10) {
             storeValue(num);
         } else {
             storeValue(num, "secondNumber");

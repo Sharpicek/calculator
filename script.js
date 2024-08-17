@@ -46,22 +46,28 @@ function updateDisplay(value, type) {
     }
 };
 
-function storeNumber(num) {
+function checkLength(num) {
     if (resultPressed && operator == null) {
         clearCalculator();
-        firstNumber += num; 
-        updateDisplay(num, "num1");
-        console.log("Num 1: " + firstNumber);
+        storeValue(num, "firstNumber");
     } else if (operator == null && !fillOnlySecondNumber) {
+        storeValue(num, "firstNumber");
+    } else {
+        storeValue(num, "secondNumber");
+    }
+};
+
+function storeValue(num, type) {
+    if (type == "firstNumber") {
         firstNumber += num; 
         updateDisplay(firstNumber, "num1");
         console.log("Num 1: " + firstNumber);
-    } else {
+    } else if (type == "secondNumber") {
         secondNumber += num;
         updateDisplay(secondNumber, "num2");
         console.log("Num 1: " + firstNumber + " || Num 2: " + secondNumber);
-    }
-};
+    } else {}
+}
 
 function clearCalculator() {
     firstNumber = "";
@@ -76,7 +82,7 @@ for (let i = 0; i < 17; i++) {
 allButtons[i].addEventListener("click", (button) => {
     const value = button.target.value;
     if (Number.isFinite(parseInt(value))) {
-        storeNumber(value);
+        checkLength(value);
     } else if (value == "C") {
         clearCalculator();
     } else if (value == "=") {

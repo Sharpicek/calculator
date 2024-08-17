@@ -2,7 +2,7 @@ let firstNumber = "";
 let secondNumber = ""; 
 let resultPressed = false;
 let fillOnlySecondNumber = false;
-let operator = null;
+let operator = "";
 const allButtons = document.querySelectorAll("button");
 const display = document.getElementById("display-text");
 
@@ -24,7 +24,7 @@ function operate(firstNum, operatorChoice, secondNum) {
     }
     result = Math.round((result + Number.EPSILON) * 1000) / 1000
     updateDisplay(result, "result")
-    operator = null;
+    operator = "";
     firstNumber = result;
     secondNumber = "";
     resultPressed = true;
@@ -34,31 +34,27 @@ function operate(firstNum, operatorChoice, secondNum) {
 };
 
 function updateDisplay(value, type) {
-    if (type == "num1") {
-        display.textContent = value;        
-    } else if (type == "operator") {
-        display.textContent += value;
-    } else if (type == "num2") {
-        display.textContent += getLastDigit(value);
+    if (type == "num") {
+        display.textContent = firstNumber + operator + secondNumber;        
     } else if (type == "result") {
         display.textContent = value;
     } else if (type == "clear") {
         display.textContent = 0;
     } else if (display.textContent.length >= 10) {
         display.textContent = "";
-        display.textContent += getLastDigit(value);
+        display.textContent = secondNumber;
     } else {
-        display.textContent += getLastDigit(value);
+        display.textContent = secondNumber;
     }
 };
 
 function checkLength(num) {
     if (display.textContent.length >= 13 && secondNumber != "") return;
     if (secondNumber.length == 10) return;
-    if (resultPressed && operator == null) {
+    if (resultPressed && operator == "") {
         clearCalculator();
         storeValue(num, "firstNumber");
-    } else if (operator == null && !fillOnlySecondNumber) {
+    } else if (operator == "" && !fillOnlySecondNumber) {
         if (firstNumber.length >= 10) return;
         storeValue(num, "firstNumber");
     } else {
@@ -73,10 +69,10 @@ function checkLength(num) {
 function storeValue(num, type) {
     if (type == "firstNumber") {
         firstNumber += num; 
-        updateDisplay(firstNumber, "num1");
+        updateDisplay(firstNumber, "num");
     } else if (type == "secondNumber") {
         secondNumber += num;
-        updateDisplay(secondNumber, "num2");
+        updateDisplay(secondNumber, "num");
     } else {
         secondNumber += num;
         updateDisplay(secondNumber);
@@ -88,7 +84,7 @@ function clearCalculator() {
     secondNumber = ""; 
     resultPressed = false;
     fillOnlySecondNumber = false;
-    operator = null;
+    operator = "";
     updateDisplay(null, "clear");
 }
 
@@ -105,8 +101,8 @@ allButtons[i].addEventListener("click", (button) => {
     } else if (value == ".") {
         console.log(value)
     } else {
-        updateDisplay(value, "operator");
         operator = value;
+        updateDisplay(value, "num");
     }
 });
 };

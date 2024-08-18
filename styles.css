@@ -15,21 +15,21 @@ body {
     justify-content: space-between;
 }
 
-footer, header {
+footer {
     background-color: rgb(209, 145, 26);
     padding: 15px;
 }
 
-.header, .footer {
+.footer {
     font-family: Rubik, 'Times New Roman', Times, serif;
     text-align: center;
     text-decoration: none;
     color: black;
+    font-size: 15px;
 }
 
-.footer {
-    font-size: 15px;
-    
+a.footer:hover {
+    color: hsl(0, 0%, 25%);
 }
 
 .calc-cont {

@@ -1,13 +1,35 @@
 * {
     box-sizing: border-box;
+    font-size: 28px;
     margin: 0;
     padding: 0;
-    font-size: 28px;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 body {
+    width: 100%;
+    height: 100vh;
     background-color: rgb(226, 164, 92);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+footer, header {
+    background-color: rgb(209, 145, 26);
+    padding: 15px;
+}
+
+.header, .footer {
+    font-family: Rubik, 'Times New Roman', Times, serif;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+}
+
+.footer {
+    font-size: 15px;
+    
 }
 
 .calc-cont {
@@ -17,7 +39,7 @@ body {
     max-width: 400px;
     height: auto;
     border: 5px outset rgb(146, 146, 146);
-    margin: 5vh auto;
+    margin: auto;
     border-radius: 15px;
     background-color: dimgray;
     box-shadow: 0 0 10px 10px rgba(0,0,0,0.4);

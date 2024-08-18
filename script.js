@@ -47,6 +47,8 @@ function updateDisplay(value, type) {
         display.textContent = 0;
     } else if (type == "overflow") {
         display.textContent = "OVERFLOW :("
+    } else if (type == "error") {
+        display.textContent = "BOOM!"
     } else if (display.textContent.length >= 10) {
         display.textContent = "";
         display.textContent = secondNumber;
@@ -57,7 +59,6 @@ function updateDisplay(value, type) {
 
 function checkLength(num) {
     if (display.textContent.length >= 13 && secondNumber != "") return;
-    if (secondNumber.length == 10) return;
     if (resultPressed && operator == "") {
         clearCalculator();
         storeValue(num, "firstNumber");
@@ -86,6 +87,15 @@ function storeValue(num, type) {
     }
 }
 
+function decimalPoint() {
+    const containsDecimal = display.textContent.split("").includes(".");
+    if (operator == "" && !containsDecimal) {
+        firstNumber += ".";
+    } else if (!containsDecimal) {
+        secondNumber += ".";
+    }
+};
+
 function clearCalculator() {
     firstNumber = "";
     secondNumber = ""; 
@@ -106,7 +116,7 @@ allButtons[i].addEventListener("click", (button) => {
         if (secondNumber == "") return; // When = is pressed and second number has no value, do nothing
         operate(parseFloat(firstNumber), operator, parseFloat(secondNumber));
     } else if (value == ".") {
-        console.log(value)
+        decimalPoint();
     } else {
         if (firstNumber == "") return;
         operator = value;

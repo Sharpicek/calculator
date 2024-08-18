@@ -20,11 +20,10 @@ function operate(firstNum, operatorChoice, secondNum) {
             break;
         case " / ":
             if (secondNum === 0) {
-               return updateDisplay(null, "error");
+                return updateDisplay(null, "error");
             } else {
-                firstNum / secondNum
+                result = firstNum / secondNum
             }
-            break;
     }
     result = Math.round((result + Number.EPSILON) * 100) / 100;
     if ((result + "").length >= 12) {

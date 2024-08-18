@@ -22,10 +22,15 @@ function operate(firstNum, operatorChoice, secondNum) {
             result = firstNum / secondNum;
             break;
     }
-    result = Math.round((result + Number.EPSILON) * 1000) / 1000
-    updateDisplay(result, "result")
+    result = Math.round((result + Number.EPSILON) * 100) / 100;
+    if ((result + "").length >= 12) {
+        updateDisplay(result, "overflow");
+        firstNumber = "";
+    } else {
+        updateDisplay(result, "result");
+        firstNumber = result;
+    }
     operator = "";
-    firstNumber = result;
     secondNumber = "";
     resultPressed = true;
     fillOnlySecondNumber = true;
@@ -40,6 +45,8 @@ function updateDisplay(value, type) {
         display.textContent = value;
     } else if (type == "clear") {
         display.textContent = 0;
+    } else if (type == "overflow") {
+        display.textContent = "OVERFLOW :("
     } else if (display.textContent.length >= 10) {
         display.textContent = "";
         display.textContent = secondNumber;
@@ -101,12 +108,9 @@ allButtons[i].addEventListener("click", (button) => {
     } else if (value == ".") {
         console.log(value)
     } else {
+        if (firstNumber == "") return;
         operator = value;
         updateDisplay(value, "num");
     }
 });
-};
-
-function getLastDigit(num) {
-    return +(num + '').slice(-1);
 };

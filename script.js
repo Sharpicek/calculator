@@ -1,7 +1,6 @@
 let firstNumber = "";
 let secondNumber = ""; 
 let resultPressed = false;
-let fillOnlySecondNumber = false;
 let operator = "";
 const allButtons = document.querySelectorAll("button");
 const display = document.getElementById("display-text");
@@ -20,6 +19,10 @@ function operate(firstNum, operatorChoice, secondNum) {
             break;
         case " / ":
             if (secondNum === 0) {
+                firstNumber = "";
+                secondNumber = ""; 
+                resultPressed = false;
+                operator = "";
                 return updateDisplay(null, "error");
             } else {
                 result = firstNum / secondNum
@@ -36,7 +39,6 @@ function operate(firstNum, operatorChoice, secondNum) {
     operator = "";
     secondNumber = "";
     resultPressed = true;
-    fillOnlySecondNumber = true;
     console.log(result);
     return result;
 };
@@ -65,7 +67,7 @@ function checkLength(num) {
     if (resultPressed && operator == "") {
         clearCalculator();
         storeValue(num, "firstNumber");
-    } else if (operator == "" && !fillOnlySecondNumber) {
+    } else if (operator == "" && !resultPressed) {
         if (firstNumber.length >= 10) return;
         storeValue(num, "firstNumber");
     } else {
@@ -103,7 +105,6 @@ function clearCalculator() {
     firstNumber = "";
     secondNumber = ""; 
     resultPressed = false;
-    fillOnlySecondNumber = false;
     operator = "";
     updateDisplay(null, "clear");
 }

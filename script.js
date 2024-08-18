@@ -19,7 +19,11 @@ function operate(firstNum, operatorChoice, secondNum) {
             result = firstNum * secondNum;
             break;
         case " / ":
-            result = firstNum / secondNum;
+            if (secondNum === 0) {
+               return updateDisplay(null, "error");
+            } else {
+                firstNum / secondNum
+            }
             break;
     }
     result = Math.round((result + Number.EPSILON) * 100) / 100;

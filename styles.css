@@ -110,6 +110,8 @@ button {
 
 button {
     border: 8px outset rgb(255, 255, 255);
+    cursor: pointer;
+    font-weight: bold;
 }
 
 button:hover {

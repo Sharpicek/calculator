@@ -8,3 +8,5 @@ There are some things, that doesn't work as I would like to.
 3) You can't work with too big numbers, because of display overflow reasons.
 4) I was too lazy to do keyboard support.
 5) Cleaner code would be nice. But I was working way too long on it and started to dislike working on it.
+
+You can see it live [here](https://sharpicek.github.io/calculator/)!
